@@ -10,7 +10,7 @@ class TuringRobot:
     def __init__(self):
         # ask为请求的json数据
         self.ask = {
-            "key": "adfb722fdaf44e9fa820ed7c7d36a0c2",
+            "key": "填写你的图灵key",
             "info": ""
         }
     # 对话函数 主要实现对话功能的函数

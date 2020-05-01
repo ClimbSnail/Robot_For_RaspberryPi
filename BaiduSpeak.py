@@ -17,12 +17,9 @@ from aip import AipSpeech  # pip install baidu-aip
 class BaiduSpeak:
 
 	""" 你的 APPID AK SK """
-	APP_ID = '15941088'  # 你的 App ID
-	#APP_ID = '16311361'  # 你的 App ID
-	API_KEY = 'IgbVW2EB3rGVGygs6mzRzOv4'  # 你的 Api Key
-	#API_KEY = 'ksKdSzcdEci2m2DFoGQ1HnQr'  # 你的 Api Key
-	SECRET_KEY = 'BLcKQxjgLRteP88NPzkRUPlO4HgeTaxV'  # 你的 Secret Key
-	#SECRET_KEY = 'KYzGGRFIxb4L5aE92Pz5GAyKpw8NUa9A'  # 你的 Secret Key
+	APP_ID = '填写你的百度App ID'  # 你的 App ID
+	API_KEY = '填写你的百度Api Key'  # 你的 Api Key
+	SECRET_KEY = '填写你的百度Secret Key'  # 你的 Secret Key
 
 	# 语音识别错误码
 	asr_error_msg = {"3300": "输入参数不正确",

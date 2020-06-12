@@ -2,7 +2,7 @@
 
 import RPi.GPIO as GPIO
 # 导入读动作数据的库
-from ReadAction import *
+from read_action import *
 import serial
 import time	
 import sys
@@ -39,7 +39,7 @@ class UART():
 			"体感功能关闭":b'\xFD\r\n',	"体感功能打开":b'\xFE\r\n',	"初始化并打开体感功能":b'\xFF\r\n'
 			}
 			
-	def __init__(self, devName = "/dev/ttyAMA0", BaudRate=115200 ):
+	def __init__(self, devName, BaudRate=115200 ):
 		self.BaudRate = BaudRate
 		# 打开串口
 		self.ser = serial.Serial(devName, self.BaudRate)
@@ -280,4 +280,3 @@ if __name__ == '__main__':
 	IOCtrler.PwmCtrl(b'U2T\x55\x55\x01\x07\x01\xFE\x01\xE8\x03\x0C\r\n' )
 	time.sleep(0.2)
 	'''
-	

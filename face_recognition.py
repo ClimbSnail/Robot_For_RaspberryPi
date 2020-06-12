@@ -11,11 +11,12 @@ import numpy as np
 import threading
 import urllib.request
 from PIL import Image  # 记得安装 pip install Pillow
+from platform import system
 
 
 # import pytesseract as tess	# 记得安装 pip install pytesseract
 
-class FaceRecognition:
+class FaceRecognition():
     # 定义系统类型  linux 与 windows
     system = "linux"
     # HSV常用的色彩值 value列表的第一个值是低分量 第二个值为高分量
@@ -51,39 +52,56 @@ class FaceRecognition:
 
         self.face_model_flag = False
 
-    # 类的析构函数
     def __del__(self):
+        """
+        类的析构函数
+        :return:
+        """
         cv.destroyAllWindows()  # 释放窗口资源
 
-    # --------将英文字母字符串固定映射成整形数据 注：再次逆向转化回来需要使用int2string()函数-----#
-    @classmethod  # 本函数目前不用了
+    @classmethod
     def string2int(self, strdat):
+        """
+        将英文字母字符串固定映射成整形数据 注：再次逆向转化回来需要使用int2string()函数(本函数目前不用了)
+        :param strdat: 字符串
+        :return:
+        """
         ret = 0
         for strtmp in strdat:
             ret = ret * 100 + ord(strtmp) - 65
         return ret
 
-    # --------将原本通过string2int()转化成的整形数据，再次转换成原始英文字母字符串-----#
-    # 本函数目前不用了
     @classmethod
     def int2string(self, num):
+        """
+        将原本通过string2int()转化成的整形数据，再次转换成原始英文字母字符串（本函数目前不用了）
+        :param num:
+        :return:
+        """
         ret = ""
         while num >= 0.5:  # 精度问题 不能写成 num>=0
             ret = chr(int(num % 100) + 65) + ret
             num /= 100
         return ret
 
-    # --------——————————————————————————————————获取图像数据--------——————————————————————————————————#
-
     def getImageInfo(self, image):
+        """
+        打印图像数据的信息
+        :param image: 图像数据
+        :return:
+        """
         print(type(image))
         print(image.shape)
         print(image.size)
         print(image.dtype)
 
-    # 检测目录是否存在 若不存在则创建目录
     @classmethod
     def createDir(self, path):
+        """
+        检测目录是否存在 若不存在则创建目录
+        :param path: 待检测的目录
+        :return: None
+        """
         location = "."
         floors = path.split("/")
         for floor in floors:
@@ -91,8 +109,13 @@ class FaceRecognition:
             if not os.path.exists(location):
                 os.mkdir(location)  ## 创建目录操作函数
 
-    # 初始化模型对象
     def initModel(self, modelPath, modelName):
+        """
+        初始化模型对象
+        :param modelPath: 模型的路径
+        :param modelName: 模型名称
+        :return:
+        """
         # 判断是否存在该模型
         if not os.path.exists(modelPath + "/" + modelName):
             print("This model is not found !")
@@ -107,8 +130,14 @@ class FaceRecognition:
         self.face_model_flag = True
         return True
 
-    # 采集图片中的人脸数据并保存
     def faceDataExtraction(self, image, savePath, format):
+        """
+        采集图片中的人脸数据并保存
+        :param image: 图片数据
+        :param savePath: 保存的路径
+        :param format: 保存的图片格式
+        :return:
+        """
         # 限制采集的图片数据
         if self.image_save_num >= self.image_msize:
             self.image_save_num = 0  # 初始化image_save_num计数变量
@@ -145,9 +174,14 @@ class FaceRecognition:
         # cv.imshow("Face Video", image)  # 显示绘制矩形框的图形
         return False  # 返回是否采集完毕
 
-    # 训练模型
-    # imagesPath:训练数据路径 saveModelPath:保存模型路径 modelName:模型名称
     def trainingModel(self, imagesPath, modelPath, modelName):
+        """
+        训练模型
+        :param imagesPath: 训练数据路径
+        :param modelPath: 保存模型路径
+        :param modelName: 模型名称
+        :return: 返回执行成功与否的标志位
+        """
         # 判断是否存在图片数据
         if not os.path.exists(imagesPath):
             print("Image directory is not found !")
@@ -189,8 +223,12 @@ class FaceRecognition:
         # 返回成功
         return True
 
-    # 人脸检测
     def face_decete(self, image):
+        """
+        人脸检测
+        :param image: RGB图片
+        :return: 检测的结果(文本)
+        """
         try:
             gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)  # 转为灰度图像 加快检测速度
             # 用人脸级联分类器引擎去检测gray中的人脸
@@ -239,8 +277,13 @@ class FaceRecognition:
             print(e)
             return None
 
-    # 识别颜色 并将识别颜色对象外的其他颜色用黑色覆盖 并返回处理后的图像
     def findColor(self, image, color="red"):
+        """
+        识别颜色 并将识别颜色对象外的其他颜色用黑色覆盖
+        :param image: RGB图片
+        :param color: 要识别的颜色
+        :return: 处理后的图像
+        """
         # 以下是计算绿色hsv色彩空间的值
         try:
             hsv = cv.cvtColor(image, cv.COLOR_BGR2HSV)
@@ -255,8 +298,12 @@ class FaceRecognition:
         cv.imshow("dst", dst)  # 在窗口显示图像
         return dst
 
-    # 验证码识别（有问题）	返回识别的结果(字符串)
     def recognize_text(self, image):
+        """
+        验证码识别（有问题）
+        :param image: RGB图片
+        :return: 识别的结果(字符串)
+        """
         gray = cv.cvtColor(src, cv.COLOR_BGR2GRAY)  # 转为灰度图像 加快检测速度
         ret, open_out = cv.threshold(gray, 0, 255, cv.THRESH_BINARY_INV | cv.THRESH_OTSU)
         # 如果上面的效果不好 可以进行下列过滤
@@ -341,7 +388,7 @@ if __name__ == "__main__":
 	"""
 
     # 定义系统类型  linux 与 windows
-    system = "linux"
+    system = system().lower()
 
     # 定义图像来源 Camera 与 MJPEG_Stream, windows上建议参数Camera
     Image_Source = "MJPEG_Stream"

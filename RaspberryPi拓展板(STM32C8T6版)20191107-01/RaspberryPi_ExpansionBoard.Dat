@@ -1,0 +1,50 @@
+﻿Field=#~Integer~#~50|Field=Comment~String~Comment~100|Field=Description~String~Description~100|Field=Designator~String~Designator~100|Field=Footprint~String~Footprint~100|Field=LibRef~String~LibRef~100|Field=Quantity~Integer~Quantity~100|ReportField=Currency~<none>|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~RaspberryPi_ExpansionBoard.PrjPcb|ReportField=ProjectFullPath~E:\我的项目集合\RaspberryPi拓展板(STM32C8T6版)\RaspberryPi_ExpansionBoard.PrjPcb|ReportField=Title~Bill of Materials For Project [RaspberryPi_ExpansionBoard.PrjPcb] (No PCB Document Selected)|ReportField=ReportTime~12:37:13|ReportField=ReportDate~2019-07-27|ReportField=ReportDateTime~2019-07-27 12:37:13|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=TotalQuantity~80|ReportField=TotalActualPrice~0|ReportField=TotalTargetPrice~0|ReportField=VersionControl_RevNumber~|ReportField=VersionControl_ProjFolderRevNumber~|ReportField=Address1~|ReportField=Address2~|ReportField=Address3~|ReportField=Address4~|ReportField=Application_BuildNumber~|ReportField=ApprovedBy~|ReportField=Author~|ReportField=CheckedBy~|ReportField=CompanyName~|ReportField=CurrentDate~2019-07-27|ReportField=CurrentTime~12:37:08|ReportField=Date~|ReportField=DocumentFullPathAndName~E:\我的项目集合\RaspberryPi拓展板(STM32C8T6版)\RaspberryPi_ExpansionBoard.SchDoc|ReportField=DocumentName~RaspberryPi_ExpansionBoard.SchDoc|ReportField=DocumentNumber~|ReportField=DrawnBy~|ReportField=Engineer~|ReportField=ImagePath~|ReportField=ModifiedDate~2019-07-26|ReportField=Organization~|ReportField=ProjectName~RaspberryPi_ExpansionBoard.PrjPcb|ReportField=Revision~|ReportField=Rule~|ReportField=SheetNumber~|ReportField=SheetTotal~|ReportField=Time~|ReportField=Title~|ReportField=DataSourceFileName~RaspberryPi_ExpansionBoard.PrjPcb|ReportField=DataSourceFullPath~E:\我的项目集合\RaspberryPi拓展板(STM32C8T6版)\RaspberryPi_ExpansionBoard.PrjPcb|ReportField=PCBConfigurationName~Default Configuration|ReportField=Item~|ReportField=ItemRevision~|ReportField=ItemAndRevision~|ReportField=ItemRevisionBase~|ReportField=ItemRevisionLevel1~|ReportField=ItemRevisionLevel2~|ReportField=ItemRevisionLevel1AndBase~|ReportField=ItemRevisionLevel2AndLevel1~
+1|KF301_2P|KF301|--   6-8V|KF301-2P|HEAD2|1
+2|MP1584EN||*2|SOP8_L|MP1584EN|1
+3|Five-witch|五向开关|*3|Five-witch|Five-witch|1
+4|PAM8403||*4|SOP16N_M|PAM8403|1
+5|5264|单总线舵机接口|*5, *6, *7, *8, *10|5264|5264|5
+6|Head||*9|heard3X3|hader_3*3|1
+7|HDR-1X3|3P接插件|3V, 5V|HDR-1X3R|Header 3|2
+8|AMS1117-3V3|三端稳压芯片|1117|SOT89_N|AMS1117|1
+9|BEEP|蜂鸣器|BEEP1|BEEP 5x9x5.5|BEEP|1
+10|Bluetooth|蓝牙/串口|Blue|HDR-1X4_M|Header4booth|1
+11|100nF|无极性贴片电容|C1|C 0603|C|1
+12|150pF|无极性贴片电容|C2|C 0603|C|1
+13|1uF|无极性贴片电容|C3, C6, C8, C11|C 0603|C|4
+14|102|无极性贴片电容|C4|C 0603|C|1
+15|22pF|无极性贴片电容|C5, C7|C 0603|C|2
+16|10uF|无极性贴片电容|C9, C10|C 0603|C|2
+17|104|无极性贴片电容|C12, C13, C14|C 0603|C|3
+18|PJ342|3.5耳机插座,4Pin|CON1|PJ342B|PJ342|1
+19|10uF/10V|贴片固态电容|E1|CT 5*6 - C|C-CT|1
+20|HDR-1X3|3P接插件|GND|HDR-1X3|Header 3|1
+21|HDR-1X2|2P接插件|JP1, JP2|XH2.54-WI-2P|Header 2|2
+22|Header 2X11|20*2P接插件|JP3|HDR2.54-LI-2x20P|Header 20X2|1
+23|HDR-1X8|8P接插件|JP4|pad*8|Header 8|1
+24|4.7um|功率屏蔽电感|L1|L-SMD-0630|L-CDRH|1
+25|RGB-3528|三基色LED|LED1|LED 3528-4Pin|LED-RGB-3528|1
+26|HDR-1X2|2P接插件|MOS1, MOS2|HDR-1X2|Header 2|2
+27|OLED 0.96-12864_4pin|12864 点阵屏|OLED|OLED 0.96-12864_4pin|OLED 0.96-12864_4pin|1
+28|817|线性光耦|PC1|SOP4-W2.54_L|817|1
+29|SS8550|高频放大-PNP型|Q1|TO92A|8550-DIP|1
+30|P40NF10L|N沟场效应管|Q2|TO252|P40NF10L|1
+31|2K|贴片电阻|R1|R 0603|R|1
+32|103|贴片网络排阻|R2, R14|RCA-8P4R-0603|R-8P4R|2
+33|100K|贴片电阻|R3, R6, R7|R 0603|R|3
+34|43K|贴片电阻|R4|R 0603|R|1
+35|8.2K|贴片电阻|R5|R 0603|R|1
+36|10K|贴片电阻|R8, R10, R11, R13, R15, R18, R21, R23|R 0603|R|8
+37|1K|贴片电阻|R9, R17|R 0603|R|2
+38|1.5K|贴片电阻|R12|R 0603|R|1
+39|3K|贴片电阻|R16|R 0603|R|1
+40|100R|贴片电阻|R19, R20, R22|R 0603|R|3
+41|红色|贴片LED|Red1|LED 0603R|LED-SMD|1
+42|SI2302|N沟道场效应管|SI1, SI2|SOT23-3N|SI2302|2
+43|STM32F103C8|Flaah:64/RAM:20/IO:36|STM32|LQFP48 7X7_N|STM32F103C8|1
+44|3x6x5|3x6轻触开关|SW1|TSW SMD-3*6*2.5|TSW 3x6|1
+45|Header 4|SWD|SWD|HDR-1X4|Header 4|1
+46|USB|USB-A型母接口|USB1|USB-A/S_E|USB-A/S|1
+47|SS34|肖特基二极管|VD1|SMA|SS34|1
+48|M7|整流二极管|VD2, VD3, VD4, VD5|SMA|M7|4
+49|8MHz|2脚晶振|X1|XTAL-49S DIP|XTAL-2|1

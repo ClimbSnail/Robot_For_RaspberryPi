@@ -1,0 +1,108 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.14.2
+Copyright (C) 2015 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: Cortex-M3, 1, LIC=TA39U-SHPF6-5BBEB-2XJJB-CYLSA-V9VD6
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.14.0.0
+Toolchain Path:  D:\MDK\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.05 update 1 (build 106)
+Assembler:       Armasm.exe V5.05 update 1 (build 106)
+Linker/Locator:  ArmLink.exe V5.05 update 1 (build 106)
+Library Manager: ArmAr.exe V5.05 update 1 (build 106)
+Hex Converter:   FromElf.exe V5.05 update 1 (build 106)
+CPU DLL:         SARMCM3.DLL V5.14.0.0
+Dialog DLL:      DCM.DLL V1.13.1.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.14.0_KEIL
+Dialog DLL:      TCM.DLL V1.14.4.0
+ 
+<h2>Project:</h2>
+C:\Users\Administrator\Desktop\RPI_ExpansionBoard _Code\USER\TwoFoot_RobotSomatic.uvprojx
+Project File Date:  09/02/2019
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.05 update 1 (build 106)', folder: 'D:\MDK\ARM\ARMCC\Bin'
+Rebuild target 'TwoFoot_RobotSomatic'
+compiling main.c...
+..\HARDWARE\OLED\oled.h(44): warning:  #1295-D: Deprecated declaration Picture - give arg types
+  void Picture();
+..\HARDWARE\OLED\oled.h(45): warning:  #1295-D: Deprecated declaration IIC_Start - give arg types
+  void IIC_Start();
+..\HARDWARE\OLED\oled.h(46): warning:  #1295-D: Deprecated declaration IIC_Stop - give arg types
+  void IIC_Stop();
+..\HARDWARE\OLED\oled.h(51): warning:  #1295-D: Deprecated declaration IIC_Wait_Ack - give arg types
+  void IIC_Wait_Ack();
+..\SYSTEM\actionArr\actionArrFile.h(7): warning:  #1-D: last line of file ends without a newline
+  #endif 
+main.c(47): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *"
+              rate = atoi(&Usart1Data[2]);
+main.c(55): warning:  #167-D: argument of type "u8 *" is incompatible with parameter of type "const char *"
+              distance = atoi(Usart1Data);
+main.c(36): warning:  #177-D: variable "num" was declared but never referenced
+      short num;
+main.c(37): warning:  #177-D: variable "i" was declared but never referenced
+      short i;
+main.c(68): warning:  #177-D: variable "i" was declared but never referenced
+      int i;
+main.c: 10 warnings, 0 errors
+compiling stm32f10x_it.c...
+compiling system_stm32f10x.c...
+compiling led.c...
+compiling oled.c...
+..\HARDWARE\OLED\oled.h(44): warning:  #1295-D: Deprecated declaration Picture - give arg types
+  void Picture();
+..\HARDWARE\OLED\oled.h(45): warning:  #1295-D: Deprecated declaration IIC_Start - give arg types
+  void IIC_Start();
+..\HARDWARE\OLED\oled.h(46): warning:  #1295-D: Deprecated declaration IIC_Stop - give arg types
+  void IIC_Stop();
+..\HARDWARE\OLED\oled.h(51): warning:  #1295-D: Deprecated declaration IIC_Wait_Ack - give arg types
+  void IIC_Wait_Ack();
+..\HARDWARE\OLED\oled.c: 4 warnings, 0 errors
+compiling usart3.c...
+compiling adc.c...
+compiling timer.c...
+compiling pwm.c...
+compiling usart1.c...
+compiling actionArrFile.c...
+..\SYSTEM\actionArr\actionArrFile.h(7): warning:  #1-D: last line of file ends without a newline
+  #endif 
+..\SYSTEM\actionArr\actionArrFile.c(10): warning:  #1-D: last line of file ends without a newline
+..\SYSTEM\actionArr\actionArrFile.c: 2 warnings, 0 errors
+compiling deal.c...
+..\SYSTEM\actionArr\actionArrFile.h(7): warning:  #1-D: last line of file ends without a newline
+  #endif 
+..\SYSTEM\deal\deal.c(164): warning:  #1-D: last line of file ends without a newline
+  }
+..\SYSTEM\deal\deal.c: 2 warnings, 0 errors
+compiling delay.c...
+compiling sys.c...
+compiling stm32f10x_adc.c...
+compiling stm32f10x_tim.c...
+compiling misc.c...
+compiling stm32f10x_gpio.c...
+compiling core_cm3.c...
+assembling startup_stm32f10x_hd.s...
+compiling misc.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_rcc.c...
+compiling stm32f10x_usart.c...
+linking...
+..\OBJ\TwoFoot_RobotSomatic.axf: Warning: L6304W: Duplicate input file ..\obj\misc_1.o ignored.
+..\OBJ\TwoFoot_RobotSomatic.axf: Warning: L6304W: Duplicate input file ..\obj\stm32f10x_gpio_1.o ignored.
+Program Size: Code=12552 RO-data=656 RW-data=100 ZI-data=13924  
+Finished: 0 information, 2 warning and 0 error messages.
+FromELF: creating hex file...
+"..\OBJ\TwoFoot_RobotSomatic.axf" - 0 Error(s), 20 Warning(s).
+
+<h2>Collection of Component include folders:</h2>
+  C:\Users\Administrator\Desktop\RPI_ExpansionBoard _Code\USER\RTE
+  D:\MDK\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+</pre>
+</body>
+</html>

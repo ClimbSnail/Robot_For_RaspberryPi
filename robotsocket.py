@@ -78,6 +78,7 @@ class RobotSocketServer(RobotSocket):
         self.__max_bind = max_bind
         self.__client_link_dict = {}
         self.__sersocket.listen(self.__max_bind)  # 开始TCP监听
+        self.__recv_buff = 1024*128
 
     def start(self):
         '''
@@ -105,7 +106,7 @@ class RobotSocketServer(RobotSocket):
         """
         try:
             while True:
-                recv = connfd.recv(1024)  # 把接收的数据实例化
+                recv = connfd.recv(self.__recv_buff)  # 把接收的数据实例化
                 if recv == b'':  # 断开连接
                     break
                 if self.callback_func != None:
@@ -154,6 +155,7 @@ class RobotSocketClient(RobotSocket):
         self.__clientsocket = None
         self.__connFlag = False # 连接状态
         self.__disconntime = disconntime  # 掉线重连的时间
+        self.__recv_buff = 1024*128
 
     def start(self):
         '''
@@ -192,7 +194,7 @@ class RobotSocketClient(RobotSocket):
             while True:
                 try:
                     if True == self.__connFlag:
-                        recv = self.__clientsocket.recv(1024)  # 把接收的数据实例化
+                        recv = self.__clientsocket.recv(self.__recv_buff)  # 把接收的数据实例化
                         if recv == b'':  # 断开连接
                             break
                         if self.callback_func != None:

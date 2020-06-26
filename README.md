@@ -35,6 +35,7 @@ B站[视频](https://b23.tv/BV1qs411L7Pn) https://b23.tv/BV1qs411L7Pn
 整个代码的设计遵从高内聚低耦合，每个子模块都可以单独使用，内部都有对应的demo。
 
 * robot_main.py _（整个机器人的主控制模块，controller）_
+* mylogger.py _（日志打印模块，几乎本工程的代码都会用到）_
 * baidu_speak.py _（百度语音识别与合成）_
 * face_recognition.py _（基于opencv的人脸检测与识别）_
 * GPIO.py _（树莓派拓展板的IO驱动API）_
@@ -44,6 +45,7 @@ B站[视频](https://b23.tv/BV1qs411L7Pn) https://b23.tv/BV1qs411L7Pn
 * turing_robot.py _（图灵机器人对话）_
 * playsound.py _（windows下音乐播放器）_
 * robotsocket.py _（与即将开发的windows客户端通信）_
+* file_trans_manager.py _（文件管理器,基于tcp的多线程收发）_
 * config.py _（处理配置文件）_
 * default.cfg _（robot_main.py使用的默认配置文件）_
 * Action _（动作组存放的文件夹）_

@@ -1,6 +1,7 @@
 #python -u 启动，禁用stdout缓冲功能，不然打印有延时。
 
 import RPi.GPIO as GPIO
+from mylogger import *	# 导入日志库
 # 导入读动作数据的库
 from read_action import *
 import serial

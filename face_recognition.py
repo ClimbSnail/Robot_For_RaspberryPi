@@ -10,6 +10,7 @@ import cv2 as cv  # pip install
 import numpy as np
 import threading
 import urllib.request
+from mylogger import *	# 导入日志库
 from PIL import Image  # 记得安装 pip install Pillow
 from platform import system
 
@@ -33,22 +34,23 @@ class FaceRecognition():
                  }
 
     # 类的构造函数
-    def __init__(self, fr_name="MyFace", image_msize=80, system="linux"):
+    def __init__(self, fr_name="MyFace", image_msize=80, modelBasePath = "./data",
+                 modelPath = "./face_data/myface_data_xml", imageSavePath = "./face_data/Image", system="linux"):
         FaceRecognition.system = system  # 定义系统类型  linux 与 windows
         self.name = fr_name  # 当前人脸识别线程的名字
         self.image_save_num = 0  # 记录图片保存的数量
         self.image_msize = image_msize  # 设置训练数据的最大数目
 
         # 导入训练出来的模型(人脸特征)到级联分类器引擎 获取一个人脸检测器	cv.data.haarcascades
-        self.face_detector = cv.CascadeClassifier("./data/"
-                                                  + "haarcascade_frontalface_default.xml")
+        self.face_detector = cv.CascadeClassifier(modelBasePath
+                                                  + "/haarcascade_frontalface_default.xml")
         # 导入训练出来的模型(人眼特征)到级联分类器引擎 获取一个人眼检测器	cv.data.haarcascades
-        self.eye_detector = cv.CascadeClassifier("./data/"
-                                                 + "haarcascade_eye_tree_eyeglasses.xml")
+        self.eye_detector = cv.CascadeClassifier(modelBasePath
+                                                 + "/haarcascade_eye_tree_eyeglasses.xml")
         self.face_model = 0  # 人脸模型 在initModel()里实际初始化
         self.label_json = {}  # 模型对应的标签描述文件
-        self.imageSavePath = "./face_data/Image"  # 默认图片数据保存的总路径 注意：一定要加参数  %data
-        self.modelPath = "./face_data/myface_data_xml"  # 默认模型保存的总路径
+        self.imageSavePath = imageSavePath  # 默认图片数据保存的总路径 注意：一定要加参数  %data
+        self.modelPath = modelPath  # 默认模型保存的总路径
 
         self.face_model_flag = False
 
@@ -409,12 +411,11 @@ if __name__ == "__main__":
         th1.start()
 
     # 当前输入的模型名称(等效于标签)
-    ModelName = "heqi"
+    ModelName = "heqi_FaceData.xml"
     # 获取一个人脸识别的对象
     F = FaceRecognition(fr_name="MyFace")
     # 尝试加载模型对象
-    modelLoad = F.initModel(modelPath=F.modelPath,
-                            modelName="%s_FaceData.xml" % ModelName)
+    modelLoad = F.initModel(modelPath=F.modelPath, modelName=ModelName)
 
     # 如果模型没加载成功 说明模型文件有问题
     if modelLoad == False:

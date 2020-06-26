@@ -1,3 +1,4 @@
+from mylogger import *	# 导入日志库
 import codecs
 import time
 import os
@@ -266,7 +267,7 @@ class LeServo:
 # demo for LeServe
 if __name__ == "__main__":
 	
-	LeA = LeServo()
+	LeA = LeServo(folder = "./action")
 	
 	print("")
 	arr, res = LeA.readActionArr(actionNum = 1)

@@ -28,22 +28,24 @@ Development languages `C`、`C++`、`Python`、`C#`.
 #### Code Structure
 The design of the whole code follows high cohesion and low coupling. Each sub-module can be used alone and has a corresponding demo inside.
 
-* robot_main. Py _(controller of the whole robot)_
-* baidu_speech. Py _(Baidu Speech Recognition and Synthesis)_
-* face_recognition. Py _(face detection and recognition based on opencv)_
+* robot_main.py _(controller of the whole robot)_
+* mylogger.py _(log printing module, almost used in the code of this project)_
+* baidu_speech.py _(Baidu Speech Recognition and Synthesis)_
+* face_recognition.py _(face detection and recognition based on opencv)_
 * GPIO.py _(IO-driven API for strawberry pie development board)_
-* read_action. Py _(read of action group file)_
+* read_action.py _(read of action group file)_
 * nowboydecoder.py _(voice wake-up support file)_
 * nowboydetect.py _(voice wake-up support file)_
-* turing_robot. Py _(Turing Robot Dialogue)_
+* turing_robot.py _(Turing Robot Dialogue)_
 * playsound.py _(music player under windows)_
 * robotsocket.py _(communicating with the upcoming windows client)_
+* file_trans_manager.py _(file manager, tcp-based multithreaded transceiver)_
 * config.py _(processing configuration files)_
 * default.cfg _(default configuration file used by robot_main. Py)_
 * Action _(folder where action groups are stored)_
 * BaiduSpeak _(baidu_speak. Py default cache folder)_
 * Data _(model folder for opencv face detection)_
-* The rest are reference pictures
+* The rest are reference pictures 
 
 #### Supplement
 

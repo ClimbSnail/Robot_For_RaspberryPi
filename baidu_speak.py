@@ -8,6 +8,7 @@ import json
 import time
 import pyaudio
 from platform import system
+from mylogger import *	# 导入日志库
 from playsound import PlaySound	# 请在工程总找到playsound.py文件放到本程序同级目录
 from aip import AipSpeech  # pip install baidu-aip
 
@@ -142,13 +143,16 @@ class BaiduSpeak():
 		stream = p.open(format=FORMAT, channels=CHANNELS,
 						rate=self.rate, input=True, frames_per_buffer=CHUNK)
 
-		print("* 录音开始\n")
+		# print("* 录音开始\n")
+		myPrint("* 录音开始\n", "green", "", 1)
+
 		frames = []
 		for i in range(0, int(self.rate / CHUNK * RECORD_SECONDS)):
 			data = stream.read(CHUNK)
 			frames.append(data)
 
-		print("* 录音结束\n")
+		# print("* 录音结束\n")
+		myPrint("* 录音结束\n", "green", "", 1)
 
 		stream.stop_stream()
 		stream.close()

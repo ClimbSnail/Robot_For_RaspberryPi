@@ -10,6 +10,7 @@ import signal  # 导入信号量模块
 import requests
 import threading  # 导入线程库
 import snowboydecoder	# 使用snowboy离线唤醒
+from mylogger import *	# 导入日志库
 from platform import system
 from GPIO import *		# 导入拓展版的类库
 from read_action import *		# 导入读动作数据的库
@@ -43,6 +44,7 @@ signal.signal(signal.SIGTSTP, noPlayBusy)
 signal.signal(signal.SIGCONT, playBusy)
 
 """
+
 
 stream = None
 Running = False
@@ -112,12 +114,12 @@ interrupted = False
 
 # 控制拓展版的动作线程
 def Action(q, d):
-	IOCtrler = RPI_EXB(devName = "/dev/ttyAMA0", baudrate = 115200)
+	IOCtrler = RPI_EXB(devName = d['cfg'].getGPIOUartname(), baudrate = d['cfg'].getGPIOUartbaudrate())
 	IOCtrler.RGB( Duty = [50,60,0] )
 	IOCtrler.POWER("open")
 	# 对应型号总线舵机通电一定时间后 自身才完成初始化,所以需要延时后再送数据
 	time.sleep(0.05)
-	LeA = LeServo()
+	LeA = LeServo(d['cfg'].getActionFolder(), d['cfg'].getActionSavenum())
 	arrNum = [1, 3]
 	posNum = 0
 	# 电压查询计数器
@@ -187,6 +189,7 @@ def VoiceAwakeUp(q, d ):
 	callbacks = [lambda: snowboydecoder.play_audio_file(snowboydecoder.DETECT_DING) for i in range(len(models)) ]
 
 	print('Listening... Press Ctrl+C to exit')
+	myPrint('Listening... Press Ctrl+C to exit', "yellow", "", 1)
 	# main loop
 	# make sure you have the same numbers of callbacks and models
 	detector.start(detected_callback=callbacks,
@@ -202,18 +205,18 @@ def Voice(q, d):
 	global noSpeakJson
 
 	# 定义一个图灵机器人对话对象
-	TR = TuringRobot("填写你的图灵apikey")
+	TR = TuringRobot(d['cfg']._turing["apikey"])
 	# 获取一个百度语音对象
-	baidu = BaiduSpeak(APP_ID, API_KEY, SECRET_KEY, )
+	baidu = BaiduSpeak(d['cfg']._baiduspeak["APP_ID"], d['cfg']._baiduspeak["API_KEY"], d['cfg']._baiduspeak["SECRET_KEY"], d['cfg']._baiduspeak["cachepath"])
 
 	while True:
 		if d["awakeUpCnt"] > 6:
-			q.put("./BaiduSpeak/qingshuo.mp3")
+			q.put(baidu.cache_path+"/qingshuo.mp3")
 			time.sleep(1.5)
 			# 录音4s
-			baidu.luYin(4)
+			audio_path = baidu.recording(4)
 			# 语音识别
-			ret = baidu.getText()
+			ret = baidu.getTextByAudio(audio_path)
 			# result字段返回的时1-5个候选结果 string类型 utf-8编码
 
 			if ret["err_msg"] == "success.":
@@ -224,26 +227,31 @@ def Voice(q, d):
 				# 判断是否在不回答的内容列表里
 				if ask_text in noSpeakJson:
 					d["faceOrder"] = order_V[ask_text]
-					print( "Voice: "+ask_text+"  "+ order_V[ask_text] )
+					# print( "Voice: "+ask_text+"  "+ order_V[ask_text] )
+					myPrint("Voice: "+ask_text+"  "+ order_V[ask_text], "green", "", 1)
 				# 判断是否在动作数据里
 				# elif ask_text in actionOrder:
 				#	d["RobotOrder"] = ask_text
 						
 				else:
 					req = TR.getTalk(ask_text)["results"][0]["values"]["text"]  # 获取回答
-					print('你: %s' % ask_text)
-					print('Turing的回答：%s' % req)
+					# print('你: %s' % ask_text)
+					# print('Turing的回答：%s' % req)
+					myPrint('你: %s' % ask_text, "green", "", 1)
+					myPrint('Turing的回答：%s' % req, "green", "", 1)
+
 					# 语音合成
-					path = baidu.getAudio(req)
+					path = baidu.getAudioPathByText(req)
 					q.put(path)
 					# 休眠 让语音播放完
 					time.sleep(3)
 			else:
-				print(ret["err_msg"])
+				# print(ret["err_msg"])
+				myPrint(ret["err_msg"], "red", "", 1)
 		else:
 			time.sleep(0.5)
 			# 将设置的信息保存到配置文件中
-			baidu.confWrite()
+			baidu.cfgWrite(baidu.speakcfg)
 
 def Face(q, d):
 
@@ -265,15 +273,16 @@ def Face(q, d):
 	th1.start()
 
 	# 获取一个人脸识别的对象
-	F = FaceRecognition(fr_name="MyFace", system=system)
+	F = FaceRecognition(fr_name="MyFace", modelBasePath = d['cfg'].getOpencvDataFolderpath(),
+						modelPath = d['cfg'].getOpencvModelSavePath(), imageSavePath = d['cfg'].getOpencvImageSavePath(), system=system)
 
 	# 获取一个百度语音对象
-	baidu = BaiduSpeak()
+	baidu = BaiduSpeak(d['cfg']._baiduspeak["APP_ID"], d['cfg']._baiduspeak["API_KEY"], d['cfg']._baiduspeak["SECRET_KEY"], d['cfg']._baiduspeak["cachepath"])
 
 	# 当前输入的模型名称(等效于标签)
-	ModelName = "heqi"
+	ModelName = d['cfg'].getOpencvModelName()
 	# 尝试加载模型对象
-	modelLoad = F.initModel(modelPath=F.modelPath, modelName="%s_FaceData.xml" % ModelName)  # 初始化相关的检测器和模型检测器
+	modelLoad = F.initModel(modelPath=F.modelPath, modelName=ModelName)  # 初始化相关的检测器和模型检测器
 
 	# 如果模型没加载成功 说明模型文件有问题
 	if modelLoad == False:
@@ -293,7 +302,7 @@ def Face(q, d):
 			F.trainingModel(F.imageSavePath, F.modelPath, "%s_FaceData.xml" % ModelName)
 
 		# 重新初始化相关的检测器和模型检测器
-		F.initModel(modelPath=F.modelPath, modelName="%s_FaceData.xml" % ModelName)
+		F.initModel(modelPath=F.modelPath, modelName=ModelName)
 
 	while True:
 		while d["faceOrder"] == "":	# 等待指令不为空
@@ -316,8 +325,9 @@ def Face(q, d):
 				info = F.face_decete(frame)
 				# 人脸检查与识别的结果不为空
 				if info != None:
-					print(info)
-					path = baidu.getAudio(info)
+					# print(info)
+					myPrint(info, "green", "", 1)
+					path = baidu.getAudioPathByText(info)
 					q.put(path)
 				c = cv.waitKey(20)  # 等待操作
 				if c == 27:  # 如果按看下esc按键
@@ -406,8 +416,9 @@ def get_image(image_src, share):
 					share["ret"] = True
 			except Exception as e:
 				print(e)
+				myPrint(e, "red", "", 1)
 				continue
-		elif Image_Source == "Camera" and capture.isOpened():
+		elif image_src == "Camera" and capture.isOpened():
 			ret, frame = capture.read()  # 读取摄像头图像数据
 			share["frame"] = frame
 			share["ret"] = ret
@@ -423,7 +434,8 @@ def get_image(image_src, share):
 if __name__ == "__main__":
 
 	# This is a example
-	print("This platform is " + system().lower())
+	myPrint("This platform is %s"%system().lower(), "green", "", 1)
+	# print("This platform is " + system().lower())
 	# 启动模式 thread:多线程	process:多进程
 	model = "process"
 	cfg = ConfigManager("default.cfg")
@@ -439,7 +451,10 @@ if __name__ == "__main__":
 		# 定义系统类型  linux 与 windows
 		d_share["system"] = system().lower()
 		# 定义图像来源 Camera 与 MJPEG_Stream, windows上建议参数Camera
-		d_share["Image_Source"] = "Camera"
+		if d_share["system"] == 'linux':
+			d_share["Image_Source"] = "MJPEG_Stream"
+		else:
+			d_share["Image_Source"] = "Camera"
 		d_share["Voice_EN"] = True	#语音交互使能标志位
 		d_share["awakeUpCnt"] = 0	#语音交互计数值
 		d_share["RobotOrder"] = ""	# 判断机器人控制信号
@@ -473,7 +488,10 @@ if __name__ == "__main__":
 		# 定义系统类型  linux 与 windows
 		d_share["system"] = system().lower()
 		# 定义图像来源 Camera 与 MJPEG_Stream, windows上建议参数Camera
-		d_share["Image_Source"] = "Camera"
+		if d_share["system"] == 'linux':
+			d_share["Image_Source"] = "MJPEG_Stream"
+		else:
+			d_share["Image_Source"] = "Camera"
 		d_share["Voice_EN"] = True	#语音交互使能标志位
 		d_share["awakeUpCnt"] = 0	#语音交互计数值
 		d_share["RobotOrder"] = ""	# 判断机器人控制信号

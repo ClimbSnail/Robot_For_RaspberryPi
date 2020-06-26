@@ -1,4 +1,5 @@
 # encoding: utf-8
+from mylogger import *	# 导入日志库
 import codecs
 import time
 import json
@@ -29,25 +30,32 @@ class ConfigManager(object):
         return self._baiduspeak["cachepath"] if self._baiduspeak and "cachepath" in self._baiduspeak.keys() else None
 
     def getTuringApikey(self):
-        return self._turing["apikey"] if self._turing and "apikey" in self._baiduspeak.keys() else None
+        return self._turing["apikey"] if self._turing and "apikey" in self._turing.keys() else None
 
     def getActionFolder(self):
-        return self._action["actionfolder"] if self._action and "actionfolder" in self._baiduspeak.keys() else None
+        return self._action["actionfolder"] if self._action and "actionfolder" in self._action.keys() else None
     def getActionSavenum(self):
-        return self._action["saveNum"] if self._action and "saveNum" in self._baiduspeak.keys() else None
+        return self._action["saveNum"] if self._action and "saveNum" in self._action.keys() else None
 
-    def getOpencvModelfile(self):
-        return self._opencv["modelfile"] if self._opencv and "modelfile" in self._baiduspeak.keys() else None
+    def getOpencvDataFolderpath(self):
+        return self._opencv["datafolderpath"] if self._opencv and "datafolderpath" in self._opencv.keys() else None
+    def getOpencvModelSavePath(self):
+        return self._opencv["modelPath"] if self._opencv and "modelPath" in self._opencv.keys() else None
+    def getOpencvModelName(self):
+        return self._opencv["modelName"] if self._opencv and "modelName" in self._opencv.keys() else None
+    def getOpencvImageSavePath(self):
+        return self._opencv["imageSavePath"] if self._opencv and "imageSavePath" in self._opencv.keys() else None
+
 
     def getGPIOUartname(self):
-        return self._gpio["uartname"] if self._gpio and "uartname" in self._baiduspeak.keys() else None
+        return self._gpio["uartname"] if self._gpio and "uartname" in self._gpio.keys() else None
     def getGPIOUartbaudrate(self):
-        return self._gpio["baudrate"] if self._gpio and "baudrate" in self._baiduspeak.keys() else None
+        return int(self._gpio["baudrate"]) if self._gpio and "baudrate" in self._gpio.keys() else None
 
     def getSocketIp(self):
-        return self._gpio["ip"] if self._gpio and "ip" in self._baiduspeak.keys() else None
+        return self._socket["ip"] if self._socket and "ip" in self._socket.keys() else None
     def getSocketPort(self):
-        return self._gpio["port"] if self._gpio and "port" in self._baiduspeak.keys() else None
+        return self._socket["port"] if self._socket and "port" in self._socket.keys() else None
 
 if __name__ == "__main__":
     config = ConfigManager("default.cfg")

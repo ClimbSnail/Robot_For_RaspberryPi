@@ -57,4 +57,4 @@ B站[视频](https://b23.tv/BV1qs411L7Pn) https://b23.tv/BV1qs411L7Pn
 
 所有功能都已实现，相关内容等整立完了，统一更新。
 
-相关的windows客户端随后也将更新。
+相关的[多平台客户端](https://github.com/ClimbSnail/RobotGeneralController)也在不断更新中。

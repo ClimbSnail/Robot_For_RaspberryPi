@@ -233,7 +233,9 @@ class LeServo:
 	def arrToStr_b(self, actionarr, runtime):
 		"""
 		将数据转为总线舵机对应协议的bytes
-		:param actionarr: pwm数组
+		:param actionarr: pwm数组 
+			例如[1500, -1, 2500, 800]表示一号舵机pwm值为1500、二号舵机不变、
+			三号舵机2500、四号舵机转到800的位置
 		:param runtime: 动作运行时间
 		:return: 要发送的协议数据
 		"""

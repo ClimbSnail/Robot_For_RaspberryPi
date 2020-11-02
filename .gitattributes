@@ -3,6 +3,3 @@
 *.cpp linguist-language=Python 
 *.hpp linguist-language=Python
 *.css linguist-language=Python 
-RpiSrc/venv/
-RpiSrc/.idea/
-RpiSrc/__pycache__/

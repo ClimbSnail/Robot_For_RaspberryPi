@@ -311,7 +311,10 @@ if __name__ == "__main__":
 	print("This platform is " + system().lower())
 	# system = "windows" or "linux"
 	player = Play(system = system().lower())
-
+	
+	'''
+	在运行之前先注册百度的开发者账号 填写以下相关的内容
+	'''
 	APP_ID = '******'  # 你的 App ID
 	API_KEY = '******'  # 你的 Api Key
 	SECRET_KEY = '******'  # 你的 Secret Key

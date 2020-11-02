@@ -17,21 +17,20 @@ B站[视频](https://b23.tv/BV1qs411L7Pn) https://b23.tv/BV1qs411L7Pn
 
 #### 机器人设计思维结构图
 ![RobotFrameDiagram](https://gitee.com/ClimbSnailQ/Project_Image/raw/master/Robot_For_RaspberryPi/RobotFrameDiagram_mini.png "RobotFrameDiagram_mini.png")
-<!-- 
-<div align="center">
-<img src="https://gitee.com/ClimbSnailQ/Project_Image/raw/master/Robot_For_RaspberryPi/RobotFrameDiagram_mini.png"/>
-</div>
--->       
+
+![RobotFrameDiagram](./Image/RobotFrameDiagram_mini.png "RobotFrameDiagram_mini.png")
+   
 
 #### PCB 3D预览图
 ![RPI_ExpansionBoard_PCB](https://gitee.com/ClimbSnailQ/Project_Image/raw/master/Robot_For_RaspberryPi/RPI_ExpansionBoard_PCB.jpg)
 
+![RPI_ExpansionBoard_PCB](./Image/RPI_ExpansionBoard_PCB.jpg)
 
 #### 文件介绍
 * RPI_ExpansionBoard_Code _（树莓派拓展板内置STM32程序 MDK5工程）_
 * RaspberryPi拓展板(STM32C8T6版) _（树莓派拓展板AD电路工程文件）_
 
-#### 代码结构
+#### 代码结构（在RpiSrc文件夹中）
 整个代码的设计遵从高内聚低耦合，每个子模块都可以单独使用，内部都有对应的demo。
 
 * robot_main.py _（整个机器人的主控制模块，controller）_
@@ -51,7 +50,6 @@ B站[视频](https://b23.tv/BV1qs411L7Pn) https://b23.tv/BV1qs411L7Pn
 * Action _（动作组存放的文件夹）_
 * BaiduSpeak _（baidu_speak.py默认缓存文件夹）_
 * Data _（opencv人脸检测的模型文件夹）_
-* 其余的为参考图片
 
 #### 补充
 

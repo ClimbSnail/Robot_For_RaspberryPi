@@ -15,17 +15,21 @@ The whole project is a combination of software and hardware, providing all sourc
 Development languages `C`、`C++`、`Python`、`C#`.
 
 #### Robot Design Structure Diagram
-![RobotFrameDiagram](https://github.com/ClimbSnail/Robot_For_RaspberryPi/blob/master/Image/RobotFrameDiagram.png)
+![RobotFrameDiagram](https://gitee.com/ClimbSnailQ/Project_Image/raw/master/Robot_For_RaspberryPi/RobotFrameDiagram_mini.png "RobotFrameDiagram_mini.png")
+
+![RobotFrameDiagram](./Image/RobotFrameDiagram_mini.png "RobotFrameDiagram_mini.png")
+   
 
 #### 3D Preview of PCB
-![RPI_ExpansionBoard_PCB](https://github.com/ClimbSnail/Robot_For_RaspberryPi/blob/master/RPI_ExpansionBoard_PCB.jpg)
+![RPI_ExpansionBoard_PCB](https://gitee.com/ClimbSnailQ/Project_Image/raw/master/Robot_For_RaspberryPi/RPI_ExpansionBoard_PCB.jpg)
 
+![RPI_ExpansionBoard_PCB](./Image/RPI_ExpansionBoard_PCB.jpg)
 
 #### Introduction to the document
 * RPI_ExpansionBoard_Code _(Raspberry pie development board built-in STM32 program MDK5 project)_
 * RaspberryPi Expansion Board (STM32C8T6 Version) _(Raspberry Expansion Board AD Circuit Engineering Document)_
 
-#### Code Structure
+#### Code Structure ( in RpiSrc path )
 The design of the whole code follows high cohesion and low coupling. Each sub-module can be used alone and has a corresponding demo inside.
 
 * robot_main.py _(controller of the whole robot)_

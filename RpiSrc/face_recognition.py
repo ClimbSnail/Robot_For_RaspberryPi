@@ -391,17 +391,18 @@ if __name__ == "__main__":
 
     # 定义系统类型  linux 与 windows
     system = system().lower()
-
+    capture = 0
     # 定义图像来源 Camera 与 MJPEG_Stream, windows上建议参数Camera
-    Image_Source = "MJPEG_Stream"
+    Image_Source = "Camera"
 
     if system == "windows":
         os.system("title FaceRecognition")
 
     if Image_Source == "Camera":
-        capture = cv.VideoCapture(0)  # 获取摄像头对象
-        capture.set(3, 720)  # 设置分辨率
-        capture.set(4, 480)
+        capture = cv.VideoCapture(1)  # 获取摄像头对象'
+        print(capture)
+        #capture.set(3, 720)  # 设置分辨率
+        #capture.set(4, 480)
     else:
         #	Image_Source选用MJPEG_Stream方式
         cv_continue()
@@ -409,6 +410,7 @@ if __name__ == "__main__":
         th1 = threading.Thread(target=get_image)
         th1.setDaemon(True)  # 设置为后台线程，这里默认是False，设置为True之后则主线程不用等待子线程
         th1.start()
+
 
     # 当前输入的模型名称(等效于标签)
     ModelName = "heqi_FaceData.xml"

@@ -13,6 +13,9 @@ ExpansionBoard of RaspberryPi [Video](https://b23.tv/BV1zt411u7LR) https://b23.t
 The whole project is a combination of software and hardware, providing all source codes of the whole circuit engineering files and related functions.
 
 Development languages `C`、`C++`、`Python`、`C#`.
+![BipedRobot.jpg](https://gitee.com/ClimbSnailQ/Project_Image/raw/master/Robot_For_RaspberryPi/BipedRobot_mini.jpg)
+![BipedRobot.jpg](./Image/BipedRobot_mini.jpg)
+
 
 #### Robot Design Structure Diagram
 ![RobotFrameDiagram](https://gitee.com/ClimbSnailQ/Project_Image/raw/master/Robot_For_RaspberryPi/RobotFrameDiagram_mini.png "RobotFrameDiagram_mini.png")

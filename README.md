@@ -14,6 +14,8 @@ B站[视频](https://b23.tv/BV1qs411L7Pn) https://b23.tv/BV1qs411L7Pn
 整个项目为一个软硬件结合的项目，提供整个电路工程文件以及相关功能的所有源代码。
 
 开发语言`C`、`C++`、`Python`、`C#`。
+![BipedRobot.jpg](https://gitee.com/ClimbSnailQ/Project_Image/raw/master/Robot_For_RaspberryPi/BipedRobot_mini.jpg)
+![BipedRobot.jpg](./Image/BipedRobot_mini.jpg)
 
 #### 机器人设计思维结构图
 ![RobotFrameDiagram](https://gitee.com/ClimbSnailQ/Project_Image/raw/master/Robot_For_RaspberryPi/RobotFrameDiagram_mini.png "RobotFrameDiagram_mini.png")

@@ -2,20 +2,41 @@
 
 _You can also read a translated version of this file [英文版 in English](https://github.com/ClimbSnail/Robot_For_RaspberryPi/blob/master/README_English.md) or [in Korean 한국어]()._
 
+![BipedRobot.jpg](https://gitee.com/ClimbSnailQ/Project_Image/raw/master/Robot_For_RaspberryPi/BipedRobot_mini.jpg)
+![BipedRobot.jpg](./Image/BipedRobot_mini.jpg)
+
 项目来自我的本科毕业设计
 
 最早之前做过一版，由单片机离线控制的。可以先预览。
 
 B站[视频](https://b23.tv/BV1qs411L7Pn) https://b23.tv/BV1qs411L7Pn
+<iframe
+	src="//player.bilibili.com/player.html?aid=25532479&bvid=BV1qs411L7Pn&cid=43483717&page=1"
+	scrolling="no"
+	width="800px"
+	height="600px"
+	border="0"
+	frameborder="no"
+	framespacing="0"
+	allowfullscreen="true"> 
+</iframe>
 
 树莓派拓展板[视频](https://b23.tv/BV1zt411u7LR) https://b23.tv/BV1zt411u7LR
+<iframe
+	src="//player.bilibili.com/player.html?aid=62017744&bvid=BV1zt411u7LR&cid=107821320&page=1"
+	scrolling="no"
+	width="800px"
+	height="600px"
+	border="0"
+	frameborder="no"
+	framespacing="0"
+	allowfullscreen="true"> 
+</iframe>
 
 
 整个项目为一个软硬件结合的项目，提供整个电路工程文件以及相关功能的所有源代码。
 
 开发语言`C`、`C++`、`Python`、`C#`。
-![BipedRobot.jpg](https://gitee.com/ClimbSnailQ/Project_Image/raw/master/Robot_For_RaspberryPi/BipedRobot_mini.jpg)
-![BipedRobot.jpg](./Image/BipedRobot_mini.jpg)
 
 #### 机器人设计思维结构图
 ![RobotFrameDiagram](https://gitee.com/ClimbSnailQ/Project_Image/raw/master/Robot_For_RaspberryPi/RobotFrameDiagram_mini.png "RobotFrameDiagram_mini.png")

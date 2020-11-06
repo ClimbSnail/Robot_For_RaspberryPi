@@ -2,20 +2,40 @@
 
 _You can also read a translated version of this file [in Chinese 简体中文版](https://github.com/ClimbSnail/Robot_For_RaspberryPi/blob/master/README.md) or [in Korean 한국어]()._
 
+![BipedRobot.jpg](https://gitee.com/ClimbSnailQ/Project_Image/raw/master/Robot_For_RaspberryPi/BipedRobot_mini.jpg)
+![BipedRobot.jpg](./Image/BipedRobot_mini.jpg)
+
 The project comes from my undergraduate graduation design.
 
 I made a version before the earliest, which was controlled offline by single chip microcomputer. You can preview it first.
 
 Bilibili [Video](https://b23.tv/BV1qs411L7Pn) https://b23.tv/BV1qs411L7Pn
+<iframe
+	src="//player.bilibili.com/player.html?aid=25532479&bvid=BV1qs411L7Pn&cid=43483717&page=1"
+	scrolling="no"
+	width="800px"
+	height="600px"
+	border="0"
+	frameborder="no"
+	framespacing="0"
+	allowfullscreen="true"> 
+</iframe>
 
 ExpansionBoard of RaspberryPi [Video](https://b23.tv/BV1zt411u7LR) https://b23.tv/BV1zt411u7LR
+<iframe
+	src="//player.bilibili.com/player.html?aid=62017744&bvid=BV1zt411u7LR&cid=107821320&page=1"
+	scrolling="no"
+	width="800px"
+	height="600px"
+	border="0"
+	frameborder="no"
+	framespacing="0"
+	allowfullscreen="true"> 
+</iframe>
 
 The whole project is a combination of software and hardware, providing all source codes of the whole circuit engineering files and related functions.
 
 Development languages `C`、`C++`、`Python`、`C#`.
-![BipedRobot.jpg](https://gitee.com/ClimbSnailQ/Project_Image/raw/master/Robot_For_RaspberryPi/BipedRobot_mini.jpg)
-![BipedRobot.jpg](./Image/BipedRobot_mini.jpg)
-
 
 #### Robot Design Structure Diagram
 ![RobotFrameDiagram](https://gitee.com/ClimbSnailQ/Project_Image/raw/master/Robot_For_RaspberryPi/RobotFrameDiagram_mini.png "RobotFrameDiagram_mini.png")

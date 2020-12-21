@@ -74,6 +74,9 @@ B站[视频](https://b23.tv/BV1qs411L7Pn) https://b23.tv/BV1qs411L7Pn
 * BaiduSpeak _（baidu_speak.py默认缓存文件夹）_
 * Data _（opencv人脸检测的模型文件夹）_
 
+#### 机械结构
+螺丝 69+12 69+12 28+4 28+4 10+22
+
 #### 补充
 
 所有功能都已实现，相关内容等整立完了，统一更新。

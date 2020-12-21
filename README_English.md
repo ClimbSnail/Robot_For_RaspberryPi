@@ -72,7 +72,10 @@ The design of the whole code follows high cohesion and low coupling. Each sub-mo
 * Action _(folder where action groups are stored)_
 * BaiduSpeak _(baidu_speak. Py default cache folder)_
 * Data _(model folder for opencv face detection)_
-* The rest are reference pictures 
+* The rest are reference pictures
+ 
+#### Mechanical structure
+Screw 69+12 69+12 28+4 28+4 10+22
 
 #### Supplement
 
